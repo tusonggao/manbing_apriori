@@ -50,9 +50,35 @@ def read_and_store_df_from_impala(sql_file):
 
 
 
-df = read_and_store_df_from_impala('./sql_scripts/hive_sql_orders_products.txt')
+# df = read_and_store_df_from_impala('./sql_scripts/hive_sql_orders_products.txt')
+# df = read_and_store_df_from_impala('./sql_scripts/hive_sql_products_info.txt')
 
 
+df_order_products = pd.read_csv('./data/hive_sql_orders_products_data.csv')
+# df1 = df.groupby('orders_code')['product_code'].apply(list)
+print('df_order_products.shape is ', df_order_products.shape)
+print('df_order_products.head(10) is ', df_order_products.head(10))
+
+
+df_product_name_map = pd.read_csv('./data/hive_sql_products_info_data.csv')
+df_product_name_map = df_product_name_map[['product_code', 'common_title']]
+# df1 = df.groupby('orders_code')['product_code'].apply(list)
+print('df_product_name_map.shape is ', df_product_name_map.shape)
+print('df_product_name_map.head(10) is ', df_product_name_map.head(10))
+
+
+df_merged = pd.merge(df_order_products, df_product_name_map, how='left', on=['product_code'])
+print('df_merged.shape is ', df_merged.shape)
+print('df_merged.head(10) is ', df_merged.head(10))
+
+
+print('start group by')
+start_t = time.time()
+df_new = df_merged.groupby('orders_code')['common_title'].apply(list)
+print(df_new.shape)
+print('group by cost time', time.time()-start_t)
+
+df_new.to_csv('./data/df_new_data.csv')
 
 print('program ends')
 
