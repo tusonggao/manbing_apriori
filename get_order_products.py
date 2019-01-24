@@ -1,10 +1,12 @@
-import efficient_apriori
+# import efficient_apriori
+# from efficient_apriori import apriori
+
 import pandas as pd
 import numpy as np
 import time
 import json
 
-from efficient_apriori import apriori
+from apriori_in_actions import *
 from collections import OrderedDict
 
 useless_common_titles = {'售后服务卡', '健客大药房旗舰店宣传单', '健客家庭药箱'}

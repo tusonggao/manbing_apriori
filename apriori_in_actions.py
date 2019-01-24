@@ -1,4 +1,3 @@
-
 from numpy import *
 import pandas as pd
 
@@ -141,23 +140,22 @@ def pntRules(ruleList, itemMeaning):
 
 ######################################################################
 
-def get_orders_product():
-    return
 
 ######################################################################
 
 
-# dataSet=loadDataSet()
-# print('dataSet is', dataSet)
+if __name__=='__main__':
+    # dataSet=loadDataSet()
+    # print('dataSet is', dataSet)
 
-# result = createC1(dataSet)
-# print(result)
+    # result = createC1(dataSet)
+    # print(result)
 
-L, suppData=apriori(dataSet, minSupport=0.33)
-rules=generateRules(L,suppData, minConf=0.20)
-print(L, suppData)
+    L, suppData=apriori(dataSet, minSupport=0.33)
+    rules=generateRules(L,suppData, minConf=0.20)
+    print(L, suppData)
 
-print('rules is', rules)
+    print('rules is', rules)
 
 
 
