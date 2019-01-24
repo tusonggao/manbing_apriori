@@ -36,12 +36,15 @@ def loadDataSet():
 
 def createC1(dataSet):
     C1 = []
-    for transaction in dataSet:
-        for item in transaction:
-            if not [item] in C1:
-                C1.append([item])
+    try:
+        for transaction in dataSet:
+            for item in transaction:
+                if not [item] in C1:
+                    C1.append([item])
 
-    C1.sort()
+        C1.sort()
+    except:
+        print('get TypeError C1 is', C1)
     return list(map(frozenset, C1))  # use frozen set so we
     # can use it as a key in a dict
 
@@ -137,8 +140,6 @@ def pntRules(ruleList, itemMeaning):
             print(itemMeaning[item])
         print("confidence: %f" % ruleTup[2])
         print()  # print a blank line
-
-######################################################################
 
 
 ######################################################################
