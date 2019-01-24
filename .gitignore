@@ -1,6 +1,7 @@
 # my defined file types
 *.mylogs
 *.tsg
+*.json
 ~*.*
 data/
 model_output/
