@@ -120,6 +120,7 @@ def get_all_transactions():
         if cnt > 1000:
             continue
     print('len of transactions is ', len(transactions))
+
     return transactions
 
 

@@ -118,8 +118,8 @@ def get_all_transactions():
         # transactions.append([str(ele) for ele in ddd[code]])
         transactions.append(tuple([str(ele) for ele in ddd[code]]))
         cnt += 1
-        if cnt > 1000:
-            continue
+        if cnt > 2000:
+            break
     # print('transactions is ', transactions)
     print('len of transactions is ', len(transactions))
     return transactions
