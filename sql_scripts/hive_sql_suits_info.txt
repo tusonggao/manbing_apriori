@@ -1,6 +1,0 @@
--- 得到所有套装产品的单品信息
-select t1.product_code suit_product_code, t2.product_code single_product_code 
-from (select product_code
-from jkbd.product_parquet where is_suit=true) t1
-join jkbd.goods_group_parquet t2 
-where t1.product_code=t2.master_product_code;
