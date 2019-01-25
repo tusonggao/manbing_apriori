@@ -12,7 +12,13 @@ from collections import OrderedDict
 
 useless_common_titles = {'售后服务卡', '健客大药房旗舰店宣传单', '健客家庭药箱',
                          '名流水晶狼牙套', '杜蕾斯', '人体润滑液', '枸橼酸西地那非片',
-                         '避孕套', '男用湿巾', '人初抑菌喷雾剂'}
+                         '避孕套', '男用湿巾', '人初抑菌喷雾剂', '漱口水', '云南白药牙膏',
+                         '牙膏', '体温计', '双飞人', '咳嗽', '口罩', '创口贴', '棉签',
+                         '葛洪养生论书', '葛洪养生论光碟', '平咳贴', '退热贴', '平咳贴',
+                         '采血针', '血糖试条', '病从血中来', '酒精消毒片', '伤湿止痛膏',
+                         '血糖试纸'}
+
+whole_useless_common_titles = {'nan', '无'}
 
 
 def strip_useless_titles(titles_list):
@@ -22,6 +28,10 @@ def strip_useless_titles(titles_list):
         flag = True
         for useless_title in useless_common_titles:
             if title.find(useless_title)!=-1:
+                flag = False
+                break
+        for useless_title in whole_useless_common_titles:
+            if title==useless_title:
                 flag = False
                 break
         if flag:
@@ -38,7 +48,7 @@ def convert_transactions_files():
 
     skip_num = 0
     # with open('./samples_ttt.txt', 'w', encoding='utf8') as file:
-    with open('./samples_full.txt', 'w', encoding='utf8') as file:
+    with open('./self_non_daily_samples_full.txt', 'w', encoding='utf8') as file:
         cnt = 0
         for code in orders_common_titles:
             cnt += 1
@@ -60,7 +70,7 @@ def convert_transactions_files():
 
 
 def check_transactions_files():
-    with open('./samples_full.txt', 'r', encoding='utf8') as file:
+    with open('./self_non_daily_samples_full.txt', 'r', encoding='utf8') as file:
         cnt = 0
         for line in file:
             cnt += 1
