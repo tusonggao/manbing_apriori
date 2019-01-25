@@ -82,29 +82,11 @@ def map_product_code_2_common_titles(orders_product_info):
             except KeyError:
                 err_cnt += 1
                 # print('Oops! product_code: {0} not in df_product_name_map'.format(product_code))
+        common_title_set = set(str(title).strip() for title in common_title_set)
         orders_product_info_new[order_code] = list(common_title_set)
 
     print('err_cnt is ', err_cnt, 'correct_cnt is ', correct_cnt)
     return orders_product_info_new
-
-
-# orders_product_info = get_orders_product_info()
-# print('orders_product_info is ', len(orders_product_info))
-# orders_common_titles_info_unsplit = map_product_code_2_common_titles(orders_product_info)
-#
-# suits_product_info = get_suits_product_info()
-# orders_product_info_split = split_suit_product(orders_product_info, suits_product_info)
-# orders_common_titles_info_split = map_product_code_2_common_titles(orders_product_info_split)
-#
-# with open('orders_common_titles_info_unsplit.json', 'w', encoding='utf8') as fp:
-#     json.dump(orders_common_titles_info_unsplit, fp)
-#
-# with open('orders_common_titles_info_split.json', 'w', encoding='utf8') as fp:
-#     json.dump(orders_common_titles_info_split, fp)
-
-# with open('orders_common_titles_info_unsplit.json', 'r', encoding='utf8') as file:
-#     ddd = json.load(file)
-#     print(ddd)
 
 
 def get_all_transactions():
@@ -124,22 +106,23 @@ def get_all_transactions():
     return transactions
 
 
+orders_product_info = get_orders_product_info()
+print('orders_product_info is ', len(orders_product_info))
+orders_common_titles_info_unsplit = map_product_code_2_common_titles(orders_product_info)
+
+suits_product_info = get_suits_product_info()
+orders_product_info_split = split_suit_product(orders_product_info, suits_product_info)
+orders_common_titles_info_split = map_product_code_2_common_titles(orders_product_info_split)
+
+with open('orders_common_titles_info_unsplit.json', 'w', encoding='utf8') as fp:
+    json.dump(orders_common_titles_info_unsplit, fp)
+
+with open('orders_common_titles_info_split.json', 'w', encoding='utf8') as fp:
+    json.dump(orders_common_titles_info_split, fp)
+
+with open('orders_common_titles_info_unsplit.json', 'r', encoding='utf8') as file:
+    ddd = json.load(file)
+    print(ddd)
 
 
-if __name__=='__main__':
-    # transactions = [('eggs', 'bacon', 'soup'),
-    #                 ('eggs', 'bacon', 'apple'),
-    #                 ('soup', 'bacon', 'banana')]
 
-    dataSet = get_all_transactions()
-    # dataSet=loadDataSet()
-    # print('dataSet is', dataSet)
-
-    print('start apriori')
-    L, suppData = apriori(dataSet, minSupport=0.0005)
-    print('L is', L)
-    print('suppData is', suppData)
-
-    print('start generateRules')
-    rules = generateRules(L, suppData, minConf=0.03)
-    print('rules is', rules)
