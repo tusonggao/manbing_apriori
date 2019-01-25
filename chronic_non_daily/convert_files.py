@@ -18,6 +18,7 @@ useless_common_titles = {'售后服务卡', '健客大药房旗舰店宣传单',
                          '采血针', '血糖试条', '病从血中来', '酒精消毒片', '伤湿止痛膏',
                          '血糖试纸'}
 
+# 润滑液
 
 whole_useless_common_titles = {'nan', '无'}
 
