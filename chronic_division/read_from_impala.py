@@ -50,9 +50,9 @@ def read_and_store_df_from_impala(sql_file):
 
 
 
-# df = read_and_store_df_from_impala('./sql_scripts/hive_sql_orders_products.txt')
+df = read_and_store_df_from_impala('./sql_scripts/hive_sql_orders_products.txt')
 # df = read_and_store_df_from_impala('./sql_scripts/hive_sql_products_info.txt')
-df = read_and_store_df_from_impala('./sql_scripts/hive_sql_suits_info.txt')
+# df = read_and_store_df_from_impala('./sql_scripts/hive_sql_suits_info.txt')
 
 
 # df_order_products = pd.read_csv('./data/hive_sql_orders_products_data.csv')
